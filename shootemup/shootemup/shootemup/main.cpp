@@ -53,9 +53,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	
 	//ìKìñÇ…256å¬Ç≠ÇÁÇ¢çÏÇ¡Ç∆Ç≠
 	Bullet bullets[1024];
+	
 
 	Position2 enemypos(320,150);//ìGç¿ïW
-
+	char keystate[256];
+	char lastkeystate[256];
 	Position2 shotposA(0, 0);
 	Position2 shotposB(128, 0);
 	Position2 shotposC(256, 0);
@@ -109,10 +111,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			player.pos.y = min(480,player.pos.y+4);
 		}
 
-		if (keystate[KEY_INPUT_Z]&&)
+	if (keystate[KEY_INPUT_Z]&&lastkeystate[KEY_INPUT_Z])
 		{
 
 		}
+	for (auto& shot : shots)
+	{
+		if(shot.IsAc)
+	}
 
 		int pidx = (frame/4 % 2)*5+3;
 		DrawRotaGraph(player.pos.x, player.pos.y, 2.0f, 0.0f, playerH[pidx], true);
@@ -296,7 +302,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		ScreenFlip();
 		copy(begin(keystate),
 			end(keystate),
-			begin(keystate));
+			begin(lastkeystate));
 	}
 
 	DxLib_End();
